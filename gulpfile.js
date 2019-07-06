@@ -18,6 +18,9 @@ gulp.task('jstask', function() {
  * task名称不能跟处理函数同名
  */
 gulp.task('testHtmlmin', function () {
+  gulp.run('jstask', (err) => {
+    console.log('run jstask:', err);
+  });
   var options = {
     removeComments: true,//清除HTML注释
     collapseWhitespace: true,//压缩HTML
@@ -33,3 +36,15 @@ gulp.task('testHtmlmin', function () {
     .pipe(gulp.dest('dist/views'));
   return testHtmlmin;
 });
+
+gulp.task('watch', function() {
+  // gulp.watch('app/static/js/**/*.js', ['jstask']);
+  gulp.watch('app/static/js/**/*.js', (event) => {
+    console.log('Event type:' + event.type);
+    console.log('Event path:' + event.path);
+    gulp.run('jstask', (err) => {
+      console.log('run jstask:', err);
+    });
+  });
+});
+
