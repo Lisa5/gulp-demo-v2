@@ -53,7 +53,7 @@ gulp.run('jstask', function(err){
 
 #### gulp.watch()——监听文件修改
 >用于指定需要监视的文件。一旦这些文件发生变动，就运行指定任务。
->可以指定需要执行的任务，或者使用回掉函数
+>可以指定需要执行的任务，或者使用回调函数
 
 ```
 gulp.task('watch', function() {

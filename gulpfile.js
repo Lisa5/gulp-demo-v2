@@ -1,7 +1,14 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
-    babel = require("gulp-babel");
+    babel = require('gulp-babel');
+    webserver = require('gulp-webserver');
+
+var app = {
+  srcPath: 'app/',
+  devPath: 'dist/'
+};
+
 /**
  * uglify: js压缩，删除空格、注释
  */
@@ -49,3 +56,14 @@ gulp.task('watch', function() {
   });
 });
 
+gulp.task('webserver', () => {
+  gulp.src(app.srcPath)
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: true,
+      open: true
+    }));
+})
+
+/** 默认任务 */
+gulp.task('default', ['webserver', 'watch']);
