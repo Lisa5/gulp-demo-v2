@@ -1,1 +1,1 @@
-function index(){console.log("date",new Date),console.log("function index")}
+function index(){var n=new Date;console.log("date now:",n),console.log("function index")}

@@ -1,15 +1,16 @@
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-htmlmin');
-
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify'),
+    htmlmin = require('gulp-htmlmin'),
+    babel = require("gulp-babel");
 /**
  * uglify: js压缩，删除空格、注释
  */
 gulp.task('jstask', function() {
   // **匹配static/js的0个或多个子文件夹
   var jstask = gulp.src('app/static/js/**/*.js')
-  .pipe(uglify())
-  .pipe(gulp.dest('dist/static/js'));
+    .pipe(babel()) // es6转es5
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/static/js'));
   return jstask;
 });
 

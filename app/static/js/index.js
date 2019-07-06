@@ -1,4 +1,5 @@
 function index(){
-  console.log("date", new Date())
+  let date = new Date();
+  console.log("date now:", date)
   console.log("function index")
 }
