@@ -1,0 +1,1 @@
+function index(){console.log("function index")}
